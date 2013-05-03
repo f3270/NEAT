@@ -58,4 +58,7 @@ neatmain.o: neatmain.cpp neatmain.h neat.h population.h
 ########################
 
 clean:
+	rm -f neat.o network.o nnode.o link.o trait.o gene.o genome.o innovation.o organism.o species.o population.o experiments.o neatmain.o
+
+purge:
 	rm -f neat.o network.o nnode.o link.o trait.o gene.o genome.o innovation.o organism.o species.o population.o experiments.o neatmain.o neat

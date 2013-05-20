@@ -1,64 +1,55 @@
+CC=g++ -03
+CFLAGS=-g -Wall
+CPPFLAGS=-I include
 
-CC = g++ -O3
+all: neat 
 
-#LIBS = -L/usr/lib /usr/lib/libqthreads.so.0 -lguile -ldl -lreadline -ltermcap -lm
+neat: neat.o network.o nnode.o link.o trait.o gene.o genome.o innovation.o organism.o species.o population.o experiments.o neatmain.o
+	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@ ## removed -c 
 
-#INCLUDES = -I/usr/include/g++-2 -I/usr/lib/gtkmm/include -I/usr/lib/sigc++/include -I/usr/lib/glib/include -I/usr/include/gtk-1.2 -I/usr/include/glib-1.2
+neat.o: src/neat.cpp include/neat.h
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-#CFLAGS = -g -Wall -Wno-return-type $(INCLUDES) -DSWIG_GLOBAL
-#CFLAGS = -g -Wall -Werror
-CFLAGS = -g -Wall 
+network.o: src/network.cpp include/network.h include/neat.h neat.o
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-neat: neat.o network.o nnode.o link.o trait.o gene.o genome.o innovation.o organism.o species.o population.o experiments.o neatmain.o #neatswig_wrap.o visual.o
-	$(CC) $(CFLAGS) $(LIBS) neat.o network.o nnode.o link.o trait.o gene.o genome.o innovation.o organism.o species.o population.o experiments.o neatmain.o -o neat
-#	$(CC) $(CFLAGS) $(LIBS) networks.o genetics.o visual.o experiments.o neatswig_wrap.o neatmain.o -o neat `gtkmm-config --cflags --libs`
+nnode.o: src/nnode.cpp include/nnode.h
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-########################
+link.o: src/link.cpp include/link.h
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-neat.o: neat.cpp neat.h
-	  $(CC) $(CFLAGS) -c neat.cpp -o neat.o
+trait.o: src/trait.cpp include/trait.h
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-network.o: network.cpp network.h neat.h neat.o  
-	$(CC) $(CFLAGS) -c network.cpp -o network.o
+gene.o: src/gene.cpp include/gene.h
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-nnode.o: nnode.cpp nnode.h    
-	$(CC) $(CFLAGS) -c nnode.cpp -o nnode.o
+genome.o: src/genome.cpp include/genome.h
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-link.o: link.cpp link.h
-	  $(CC) $(CFLAGS) -c link.cpp -o link.o
+innovation.o: src/innovation.cpp include/innovation.h
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-trait.o: trait.cpp trait.h
-	  $(CC) $(CFLAGS) -c trait.cpp -o trait.o
+organism.o: src/organism.cpp include/organism.h
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-gene.o: gene.cpp gene.h
-	  $(CC) $(CFLAGS) -c gene.cpp -o gene.o
+species.o: src/species.cpp include/species.h include/organism.h
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-genome.o: genome.cpp genome.h
-	  $(CC) $(CFLAGS) -c genome.cpp -o genome.o
+population.o: src/population.cpp include/population.h include/organism.h
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
-innovation.o: innovation.cpp innovation.h
-	  $(CC) $(CFLAGS) -c innovation.cpp -o innovation.o
+experiments.o: src/experiments.cpp include/experiments.h include/network.h include/species.h
+	$(CC) $(CFLAGS) $(CPFLAGS) -c $< -o $@
 
-organism.o: organism.cpp organism.h    
-	$(CC) $(CFLAGS) -c organism.cpp -o organism.o
-
-species.o: species.cpp species.h organism.h
-	  $(CC) $(CFLAGS) -c species.cpp -o species.o
-
-population.o: population.cpp population.h organism.h
-	  $(CC) $(CFLAGS) -c population.cpp -o population.o
-
-experiments.o: experiments.cpp experiments.h network.h species.h
-	$(CC) $(CFLAGS) -c experiments.cpp -o experiments.o
-
-neatmain.o: neatmain.cpp neatmain.h neat.h population.h
-	$(CC) $(CFLAGS) -c neatmain.cpp -o neatmain.o
-
-
-########################
+neatmain.o: src/neatmain.cpp include/neatmain.h include/neat.h include/population.h
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean:
-	rm -f neat.o network.o nnode.o link.o trait.o gene.o genome.o innovation.o organism.o species.o population.o experiments.o neatmain.o
+	rm *.o
 
 purge:
-	rm -f neat.o network.o nnode.o link.o trait.o gene.o genome.o innovation.o organism.o species.o population.o experiments.o neatmain.o neat
+	rm *.o neat
+
+

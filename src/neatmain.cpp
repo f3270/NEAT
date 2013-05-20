@@ -88,12 +88,6 @@ int main(int argc, char *argv[]) {
   cin>>pause;
   */
 
-
-  //Here is an example of how to run an experiment directly from main
-  //and then visualize the speciation that took place
-
-  //p=xor_test(100);  //100 generation XOR experiment
-
   int choice;
 
   cout<<"Please choose an experiment: "<<endl;

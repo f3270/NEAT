@@ -41,7 +41,7 @@ population.o: src/population.cpp include/population.h include/organism.h
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 experiments.o: src/experiments.cpp include/experiments.h include/network.h include/species.h
-	$(CC) $(CFLAGS) $(CPFLAGS) -c $< -o $@
+	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 neatmain.o: src/neatmain.cpp include/neatmain.h include/neat.h include/population.h
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@

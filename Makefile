@@ -47,9 +47,9 @@ neatmain.o: src/neatmain.cpp include/neatmain.h include/neat.h include/populatio
 	$(CC) $(CFLAGS) $(CPPFLAGS) -c $< -o $@
 
 clean:
-	rm *.o
+	rm *.o *~
 
 purge:
-	rm *.o neat
+	rm *.o *~ neat 
 
 

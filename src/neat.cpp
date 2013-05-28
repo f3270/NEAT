@@ -109,273 +109,275 @@ int NEAT::num_runs = 0;
 //
 int NEAT::getUnitCount(const char *string, const char *set)
 {
-	int count = 0;
-	short last = 0;
-	while(*string)
-	{
-		last = *string++;
+    int count = 0;
+    short last = 0;
+    while(*string)
+    {
+        last = *string++;
 
-		for(int i =0; set[i]; i++)
-		{
-			if(last == set[i])
-			{
-				count++;
-				last = 0;
-				break;
-			}   
-		}
-	}
-	if(last)
-		count++;
-	return count;
+        for(int i =0; set[i]; i++)
+        {
+            if(last == set[i])
+            {
+                    count++;
+                    last = 0;
+                    break;
+            }   
+        }
+    }
+    if(last)
+            count++;
+    return count;
 }   
 
 bool NEAT::load_neat_params(const char *filename, bool output) {
 
-    std::ifstream paramFile(filename);
+    std::ifstream paramFile (filename); // (filename) is the constructor of instance paramFile
 
-	if(!paramFile) {
-		return false;
-	}
-	char curword[128];
-	//char delimiters[] = " \n"; // tab = bad, CR(int 13) = bad in the file
-	//char delimiters[] = " \t\n";
-	//char delimiters[] = {' ', '\n', (char)13};
-	//int curwordnum = 1;
-	//char filestring[1000000];
-	//paramFile.read(sizeof(filestring), filestring);
+    if(!paramFile) {
+            return false;
+    }
+    char curword[128];
+    //char delimiters[] = " \n"; // tab = bad, CR(int 13) = bad in the file
+    //char delimiters[] = " \t\n";
+    //char delimiters[] = {' ', '\n', (char)13};
+    //int curwordnum = 1;
+    //char filestring[1000000];
+    //paramFile.read(sizeof(filestring), filestring);
 
-	// **********LOAD IN PARAMETERS*************** //
-    if(output)
-	    printf("NEAT READING IN %s", filename);
+    // **********LOAD IN PARAMETERS*************** //
 
-	paramFile>>curword;
-	paramFile>>NEAT::trait_param_mut_prob;
-
-	//strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::trait_param_mut_prob = atof(curword);
-	//curwordnum += 2;
-
-	paramFile>>curword;
-	paramFile>>NEAT::trait_mutation_power;
-
-	//strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::trait_mutation_power = atof(curword);
-	//curwordnum += 2;
-
-	paramFile>>curword;
-	paramFile>>NEAT::linktrait_mut_sig;
-
-	//strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::linktrait_mut_sig = atof(curword);
-	//curwordnum += 2;
-
-	paramFile>>curword;
-	paramFile>>NEAT::nodetrait_mut_sig;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::nodetrait_mut_sig = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::weight_mut_power;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::weight_mut_power = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::recur_prob;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::recur_prob = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::disjoint_coeff;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::disjoint_coeff = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::excess_coeff;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::excess_coeff = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::mutdiff_coeff;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::mutdiff_coeff = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::compat_threshold;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::compat_threshold = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::age_significance;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::age_significance = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::survival_thresh;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::survival_thresh = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::mutate_only_prob;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::mutate_only_prob = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::mutate_random_trait_prob;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::mutate_random_trait_prob = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::mutate_link_trait_prob;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::mutate_link_trait_prob = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::mutate_node_trait_prob;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::mutate_node_trait_prob = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::mutate_link_weights_prob;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::mutate_link_weights_prob = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::mutate_toggle_enable_prob;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::mutate_toggle_enable_prob = atof(curword);
-	//curwordnum += 2;
-
-	paramFile>>curword;
-	paramFile>>NEAT::mutate_gene_reenable_prob;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::mutate_gene_reenable_prob = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::mutate_add_node_prob;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::mutate_add_node_prob = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::mutate_add_link_prob;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::mutate_add_link_prob = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::interspecies_mate_rate;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::interspecies_mate_rate = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::mate_multipoint_prob;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::mate_multipoint_prob = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::mate_multipoint_avg_prob;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::mate_multipoint_avg_prob = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::mate_singlepoint_prob;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::mate_singlepoint_prob = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::mate_only_prob;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::mate_only_prob = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::recur_only_prob;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::recur_only_prob = atof(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::pop_size;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::pop_size = atoi(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::dropoff_age;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::dropoff_age = atoi(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::newlink_tries;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::newlink_tries = atoi(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::print_every;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::print_every = atoi(curword);
-	//curwordnum += 2;
-	
-    paramFile>>curword;
-	paramFile>>NEAT::babies_stolen;
-	
-    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
-	//NEAT::babies_stolen = atoi(curword);
-	//curwordnum += 2;
+    if(output) {
+        printf("NEAT READING IN %s", filename);
+    }
 
     paramFile>>curword;
-	paramFile>>NEAT::num_runs;
-	
+    paramFile>>NEAT::trait_param_mut_prob;
+
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::trait_param_mut_prob = atof(curword);
+    //curwordnum += 2;
+
+    paramFile>>curword;
+    paramFile>>NEAT::trait_mutation_power;
+
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::trait_mutation_power = atof(curword);
+    //curwordnum += 2;
+
+    paramFile>>curword;
+    paramFile>>NEAT::linktrait_mut_sig;
+
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::linktrait_mut_sig = atof(curword);
+    //curwordnum += 2;
+
+    paramFile>>curword;
+    paramFile>>NEAT::nodetrait_mut_sig;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::nodetrait_mut_sig = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::weight_mut_power;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::weight_mut_power = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::recur_prob;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::recur_prob = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::disjoint_coeff;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::disjoint_coeff = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::excess_coeff;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::excess_coeff = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::mutdiff_coeff;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::mutdiff_coeff = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::compat_threshold;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::compat_threshold = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::age_significance;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::age_significance = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::survival_thresh;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::survival_thresh = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::mutate_only_prob;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::mutate_only_prob = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::mutate_random_trait_prob;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::mutate_random_trait_prob = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::mutate_link_trait_prob;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::mutate_link_trait_prob = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::mutate_node_trait_prob;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::mutate_node_trait_prob = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::mutate_link_weights_prob;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::mutate_link_weights_prob = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::mutate_toggle_enable_prob;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::mutate_toggle_enable_prob = atof(curword);
+    //curwordnum += 2;
+
+    paramFile>>curword;
+    paramFile>>NEAT::mutate_gene_reenable_prob;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::mutate_gene_reenable_prob = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::mutate_add_node_prob;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::mutate_add_node_prob = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::mutate_add_link_prob;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::mutate_add_link_prob = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::interspecies_mate_rate;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::interspecies_mate_rate = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::mate_multipoint_prob;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::mate_multipoint_prob = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::mate_multipoint_avg_prob;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::mate_multipoint_avg_prob = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::mate_singlepoint_prob;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::mate_singlepoint_prob = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::mate_only_prob;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::mate_only_prob = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::recur_only_prob;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::recur_only_prob = atof(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::pop_size;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::pop_size = atoi(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::dropoff_age;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::dropoff_age = atoi(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::newlink_tries;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::newlink_tries = atoi(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::print_every;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::print_every = atoi(curword);
+    //curwordnum += 2;
+    
+    paramFile>>curword;
+    paramFile>>NEAT::babies_stolen;
+    
+    //strcpy(curword, getUnit(filestring, curwordnum, delimiters));
+    //NEAT::babies_stolen = atoi(curword);
+    //curwordnum += 2;
+
+    paramFile>>curword;
+    paramFile>>NEAT::num_runs;
+    
 
     if(output) {
 	    printf("trait_param_mut_prob=%f\n",trait_param_mut_prob);

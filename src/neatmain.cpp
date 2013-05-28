@@ -118,10 +118,6 @@ int main(int argc, char *argv[]) {
     }
 
 
-  //p = pole1_test(100); // 1-pole balancing
-  //p = pole2_test(100,1); // 2-pole balancing, velocity
-  //p = pole2_test(100,0); // 2-pole balancing, no velocity (non-markov)
-
   if (p)
     delete p;
 

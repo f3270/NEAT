@@ -1,4 +1,5 @@
-CC=g++ -03
+#CC=g++ -03
+CC=g++ 
 CFLAGS=-g -Wall
 CPPFLAGS=-I include
 

@@ -148,7 +148,7 @@ bool NEAT::load_neat_params(const char *filename, bool output) {
     // **********LOAD IN PARAMETERS*************** //
 
     if(output) {
-        printf("NEAT READING IN %s", filename);
+        printf("\n\nNEAT READING IN %s\n\n", filename);
     }
 
     paramFile>>curword;

@@ -5,6 +5,11 @@ CPPFLAGS=-I include
 
 all: neat 
 
+## Compile with -pg option to profile with gprof
+debug: neat.o network.o nnode.o link.o trait.o gene.o genome.o innovation.o organism.o species.o population.o experiments.o neatmain.o
+	$(CC) $(CFLAGS) $(CPPFLAGS) -pg $^ -o neat ## removed -c 
+####
+
 neat: neat.o network.o nnode.o link.o trait.o gene.o genome.o innovation.o organism.o species.o population.o experiments.o neatmain.o
 	$(CC) $(CFLAGS) $(CPPFLAGS) $^ -o $@ ## removed -c 
 

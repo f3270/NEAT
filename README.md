@@ -1,4 +1,6 @@
-Neat2Cppn
-=========
+#Neat2Cppn
 
-Attemp of upgrading Kenneth Stanley's [NEAT code](http://nn.cs.utexas.edu/?neat-c) to CPPN
+
+Attemp of upgrading Kenneth Stanley's [NEAT code][1] to CPPN
+
+[1]: http://nn.cs.utexas.edu/?neat-c

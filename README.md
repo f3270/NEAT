@@ -122,10 +122,10 @@ When you run NEAT from the command line, you are given the option of 5
 experiments:
 
 Please choose an experiment:
-1 - 1-pole balancing
-2 - 2-pole balancing, velocity info provided
-3 - 2-pole balancing, no velocity info provided (non-markov)
-4 - XOR
+  1. - 1-pole balancing
+  2. - 2-pole balancing, velocity info provided
+  3. - 2-pole balancing, no velocity info provided (non-markov)
+  4. - XOR
 Number:
 
 At the "Number:" prompt, you can enter your choice.  The correct starter

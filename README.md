@@ -47,6 +47,7 @@ Included Files
 This is a list of files included in the distribution, and also ones that
 are created when it is run or made using the Makefile.
 
+```
 Makefile        : Makes neat on linux
 CMakeLists.txt  : cmake file for cross-platform make (use
 http://www.cmake.org/)
@@ -95,7 +96,7 @@ test.ne         : Sample parameter file
 trait.cpp       : Trait class definitions
 trait.h
 xorstartgenes   : Start genes for XOR experiment
-
+```
 
 Included Experiments
 -------------------------------------

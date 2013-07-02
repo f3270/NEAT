@@ -1,10 +1,10 @@
 NEAT2CPPN
 =========
 
-Attemp to upgrade Kenneth Stanley's [NEAT code][1] to CPPN.
+Attemp to upgrade Kenneth Stanley's [NEAT code][1] to CPPN. Below this line is the original README file
 
-Below this line is the original README file
 
+***
 
 
 Copyright 2010 The University of Texas at Austin
@@ -99,7 +99,7 @@ xorstartgenes   : Start genes for XOR experiment
 ```
 
 Included Experiments
--------------------------------------
+--------------------
 
 
 After running "make" to create the "neat" executable, NEAT can be run

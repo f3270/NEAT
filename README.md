@@ -1,11 +1,20 @@
-***************************************************************************
+NEAT2CPPN
+=========
+
+Attemp to upgrade Kenneth Stanley's [NEAT code][1] to CPPN.
+
+Below this line is the original README file
+
+
+
 Copyright 2010 The University of Texas at Austin
+------------------------------------------------
+
 
   Licensed under the Apache License, Version 2.0 (the "License");
   you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
+  You may obtain a copy of the License in this [site][2].
 
-      http://www.apache.org/licenses/LICENSE-2.0
 
   Unless required by applicable law or agreed to in writing, software
   distributed under the License is distributed on an "AS IS" BASIS,
@@ -13,27 +22,27 @@ Copyright 2010 The University of Texas at Austin
   See the License for the specific language governing permissions and
   limitations under the License.
 
-****************************************************************************
 
 NEAT source code distribution version 1.2, 7/23/10
 ----------------------------------------------------
+
 
 The NEAT software is based on the real-time NeuroEvolution of
 Augmenting Topologies method of evolving artificial neural networks, by
 Stanley and Miikkulainen (2002).
 
 Source code included in this release is originally written by Kenneth
-Stanley (kstanley@cs.ucf.edu).  The official distribution site is:
+Stanley (kstanley@cs.ucf.edu).  This is the official distribution [site][1].
 
-http://nn.cs.utexas.edu/keyword?neat-c
 
 The core NEAT code is updated significantly from earlier releases.  Traits
 can now be made functional,  and adaptive networks can be evolved (though
 the default is  non-adaptive).
 
--------------------------------------
+
 Included Files
 -------------------------------------
+
 
 This is a list of files included in the distribution, and also ones that
 are created when it is run or made using the Makefile.
@@ -87,9 +96,10 @@ trait.cpp       : Trait class definitions
 trait.h
 xorstartgenes   : Start genes for XOR experiment
 
--------------------------------------
+
 Included Experiments
 -------------------------------------
+
 
 After running "make" to create the "neat" executable, NEAT can be run
 from the command line as follows:
@@ -124,12 +134,17 @@ regular intervals based on the "print_every" parameter in the supplied
 .ne file. For example, if print_every is 5, then gen_5, gen_10, gen_15,
 etc., will be written to the directory containing NEAT.
 
-------------------------------------------------
+
 Conclusion
-------------------------------------------------
+----------
+
 
 We hope that this software will be a useful starting point for your own
 explorations in NEAT. The software is provided as is, however,
 we will do our best to maintain it and accommodate suggestions. If you
 want to be notified of future releases of the software or have questions,
 comments, bug reports or suggestions, send email to kstanley@cs.ucf.edu.
+
+
+[1]:http://nn.cs.utexas.edu/keyword?neat-c
+[2]:http://www.apache.org/licenses/LICENSE-2.0

@@ -1,5 +1,5 @@
-NEAT2CPPN
-=========
+Neuro Evolution of Augmenting Topologies
+========================================
 
 A slightly tidier version of Kenneth Stanley's NEAT original source code.
 

@@ -1,8 +1,7 @@
 NEAT2CPPN
 =========
 
-Attemp to upgrade Kenneth Stanley's [NEAT code][1] to CPPN. Below this line is the original README file
-
+A slightly tidier version of Kenneth Stanley's NEAT original source code.
 
 ***
 

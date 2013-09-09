@@ -48,15 +48,13 @@ are created when it is run or made using the Makefile.
 
 ```
 Makefile        : Makes neat on linux
-CMakeLists.txt  : cmake file for cross-platform make (use
-http://www.cmake.org/)
-README          : This file
-LICENSE         : The Apache License Version 2.0 which describes the terms
-for the release of this package
+CMakeLists.txt  : cmake file for cross-platform make (use http://www.cmake.org/)
+README.md       : This file
+LICENSE         : The Apache License Version 2.0 which describes the terms for the release of this package
+
 experiments.cpp : Sample experiments code
 experiments.h
-gen_*           : A printout of a generation- produced by generational
-                 NEAT
+gen_*           : A printout of a generation- produced by generational NEAT
 gene.cpp        : Gene class definitions
 gene.h
 genome.cpp      : Genome class definitions
@@ -78,8 +76,7 @@ organism.h
 p2mpar3bare.ne  : Sample parameter file
 p2nv.ne         : Parameter file for non-markov double pole balancing
 p2test.ne       : Sample parameter file
-params256.ne    : Sample parameter file that was used in some major 
-    experiments with pop size 256
+params256.ne    : Sample parameter file that was used in some major experiments with pop size 256
 pole1startgenes : Starter genes for signle pole balancing
 pole2_markov.ne : Parameter file for markovian double pole balancing
 pole2startgenes : Start genes for double pole balancing
@@ -97,6 +94,18 @@ trait.h
 xorstartgenes   : Start genes for XOR experiment
 ```
 
+Installation
+------------
+
+
+To compile the NEAT code just run `$ make`, and this wil create the `./build` folder 
+containing all the compiling objects and the `neat` executable.
+
+There are also two other commands:
+ * `$ make clean`: which deletes the "./build" folder
+ * `$ make purge`: which deletes both the "./build" folder and the "neat" executable
+
+
 Included Experiments
 --------------------
 
@@ -104,7 +113,7 @@ Included Experiments
 After running "make" to create the "neat" executable, NEAT can be run
 from the command line as follows:
 
-% ./neat paramfilename.ne
+`$ ./neat paramfilename.ne`
 
 "paramfilename.ne" must be included so that NEAT knows what evolution
 parameters you want to use.  You can use one of the supplied parameter

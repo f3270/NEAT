@@ -164,11 +164,11 @@ Population::Population(const char *filename) {
 				{
 					// If we've started to form the metadata, put a space in the front
 					if(md) {
-						strncat(metadata, " ", 128 - strlen(metadata));
+                                                strncat(metadata, " ", 128 - 1 - strlen(metadata));
 					}
 
 					// Append the next word to the metadata, and say that there is metadata
-					strncat(metadata, curword, 128 - strlen(metadata));
+                                        strncat(metadata, curword, 128 - 1 - strlen(metadata));
 					md = true;
 
 					//strcpy(curword, NEAT::getUnit(curline, curwordnum++, delimiters));

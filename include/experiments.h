@@ -59,6 +59,7 @@ int pole2_epoch(Population *pop,int generation,char *filename,bool velocity, Car
 class CartPole {
 public:
   CartPole(bool randomize,bool velocity);
+  virtual ~CartPole() {}
   virtual void simplifyTask();  
   virtual void nextTask();
   virtual double evalNet(Network *net,int thresh);

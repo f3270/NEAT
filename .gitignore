@@ -15,3 +15,8 @@
 # Temporary files
 *~
 
+# The "neat" executable
+neat
+
+# Any 'gen_' output files
+gen_*
